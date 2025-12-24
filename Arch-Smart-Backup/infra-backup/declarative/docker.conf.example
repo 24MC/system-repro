@@ -1,0 +1,100 @@
+# Declarative Docker Configuration
+# Generated on: 2025-12-25 10:00:00
+# This file defines what Docker resources SHOULD exist
+# Edit this file to declare desired state, not current state
+
+# Docker Compose Projects
+# These define your application stacks
+# Format: docker.compose.<name>.file=<path>
+# Format: docker.compose.<name>.state=<present|absent>
+
+# Example: Nextcloud stack
+docker.compose.nextcloud.file=inventory/docker/compose/nextcloud/docker-compose.yml
+docker.compose.nextcloud.state=present
+docker.compose.nextcloud.autostart=true
+
+# Example: Portainer (Docker management UI)
+docker.compose.portainer.file=inventory/docker/compose/portainer/docker-compose.yml
+docker.compose.portainer.state=present
+docker.compose.portainer.autostart=true
+
+# Example: Traefik reverse proxy
+docker.compose.traefik.file=inventory/docker/compose/traefik/docker-compose.yml
+docker.compose.traefik.state=present
+docker.compose.traefik.autostart=true
+
+# Example: Prometheus monitoring
+docker.compose.prometheus.file=inventory/docker/compose/prometheus/docker-compose.yml
+docker.compose.prometheus.state=present
+docker.compose.prometheus.autostart=false
+
+# Docker Volumes
+# These volumes will be created if they don't exist
+# Format: docker.volume.<name>.state=<present|absent>
+# Format: docker.volume.<name>.driver=<driver>
+
+# Nextcloud volumes
+docker.volume.nextcloud_data.state=present
+docker.volume.nextcloud_data.driver=local
+docker.volume.nextcloud_db.state=present
+docker.volume.nextcloud_db.driver=local
+
+# Portainer volume
+docker.volume.portainer_data.state=present
+docker.volume.portainer_data.driver=local
+
+# Traefik volumes
+docker.volume.traefik_certs.state=present
+docker.volume.traefik_certs.driver=local
+
+# Docker Networks
+# These networks will be created if they don't exist
+# Format: docker.network.<name>.state=<present|absent>
+# Format: docker.network.<name>.driver=<driver>
+# Format: docker.network.<name>.subnet=<subnet>
+
+# Internal network
+docker.network.internal.state=present
+docker.network.internal.driver=bridge
+docker.network.internal.subnet=172.20.0.0/16
+
+# External proxy network
+docker.network.proxy.state=present
+docker.network.proxy.driver=bridge
+docker.network.proxy.subnet=172.21.0.0/16
+
+# Monitoring network
+docker.network.monitoring.state=present
+docker.network.monitoring.driver=bridge
+docker.network.monitoring.subnet=172.22.0.0/16
+
+# Docker Configuration Policy
+# Define how Docker should be managed
+
+# Auto-start policy for compose projects
+docker.policy.autostart=true
+
+# Backup policy for volumes
+docker.policy.backup=true
+
+# Prune policy (remove unused resources)
+docker.policy.prune.dangling=true
+docker.policy.prune.volumes=false
+docker.policy.prune.networks=true
+
+# Registry configuration
+docker.registry.default=docker.io
+docker.registry.mirror=https://mirror.gcr.io
+
+# Resource limits
+docker.resource.default.memory=2g
+docker.resource.default.cpus=1.0
+
+# Security policies
+docker.security.userns-remap=false
+docker.security.no-new-privileges=true
+
+# Logging configuration
+docker.logging.driver=json-file
+docker.logging.max-size=10m
+docker.logging.max-file=3

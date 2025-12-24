@@ -1,0 +1,42 @@
+# Docker Volume Backup/Restore Metadata
+# This file defines how volumes should be handled during backup/restore
+
+# Volume Backup Policy
+# Format: volume.<name>.backup=<policy>
+# Policies:
+#   - all: Backup all data in this volume
+#   - metadata: Only backup metadata (structure, not content)
+#   - none: Skip this volume during backup
+#   - custom: Use custom backup script
+
+# Volume Restore Policy
+# Format: volume.<name>.restore=<policy>
+# Policies:
+#   - auto: Restore automatically if volume doesn't exist
+#   - prompt: Ask before restoring
+#   - skip: Never restore this volume
+#   - init-only: Only create empty volume (for databases that initialize themselves)
+
+# Default policies
+volume.default.backup=all
+volume.default.restore=auto
+
+# Example configurations (customize for your volumes):
+
+# Database volumes - backup all data, restore automatically
+# volume.postgres_data.backup=all
+# volume.postgres_data.restore=auto
+# volume.mysql_data.backup=all
+# volume.mysql_data.restore=auto
+
+# Cache volumes - backup metadata only (they can be rebuilt)
+# volume.redis_cache.backup=metadata
+# volume.redis_cache.restore=init-only
+
+# Temporary volumes - skip backup entirely
+# volume.temp_data.backup=none
+# volume.temp_data.restore=skip
+
+# Sensitive volumes - prompt before restore
+# volume.app_secrets.backup=all
+# volume.app_secrets.restore=prompt
