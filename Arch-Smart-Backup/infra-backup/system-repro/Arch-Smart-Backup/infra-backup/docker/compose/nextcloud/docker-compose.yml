@@ -1,0 +1,90 @@
+# Nextcloud Docker Compose Example
+# This is an example docker-compose file for Nextcloud
+# Copy this structure for your own applications
+
+version: '3.8'
+
+services:
+  nextcloud-db:
+    image: mariadb:10.6
+    container_name: nextcloud-db
+    restart: unless-stopped
+    networks:
+      - internal
+    volumes:
+      - nextcloud_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+
+  nextcloud-redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    restart: unless-stopped
+    networks:
+      - internal
+    command: redis-server --appendonly yes
+    volumes:
+      - nextcloud_redis:/data
+
+  nextcloud-app:
+    image: nextcloud:latest
+    container_name: nextcloud-app
+    restart: unless-stopped
+    networks:
+      - internal
+      - proxy
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+    volumes:
+      - nextcloud_data:/var/www/html
+    environment:
+      - MYSQL_HOST=nextcloud-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_HOST=nextcloud-redis
+      - NEXTCLOUD_TRUSTED_DOMAINS=${NEXTCLOUD_DOMAIN}
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITECLIURL=https://${NEXTCLOUD_DOMAIN}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud.rule=Host(`${NEXTCLOUD_DOMAIN}`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.tls.certresolver=letsencrypt"
+
+  nextcloud-cron:
+    image: nextcloud:latest
+    container_name: nextcloud-cron
+    restart: unless-stopped
+    networks:
+      - internal
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+    volumes:
+      - nextcloud_data:/var/www/html
+    entrypoint: /cron.sh
+    environment:
+      - MYSQL_HOST=nextcloud-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+networks:
+  internal:
+    external: false
+  proxy:
+    external: true
+
+volumes:
+  nextcloud_data:
+    driver: local
+  nextcloud_db:
+    driver: local
+  nextcloud_redis:
+    driver: local
