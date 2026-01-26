@@ -1,3 +1,5 @@
+WARNING: This pet-project was build using AI-tools.
+
 # Arch-Smart-Backup (Refactored)
 
 **This is a minimal refactor intended to keep the project small and focused.**
