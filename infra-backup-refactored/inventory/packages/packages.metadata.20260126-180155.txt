@@ -1,0 +1,7 @@
+timestamp: 20260126-180155
+explicit_count: 259
+aur_count: 10
+official_count: 259
+explicit_file: /home/lin/Downloads/infra-backup-refactored/inventory/packages/explicit.20260126-180155.list
+aur_file: /home/lin/Downloads/infra-backup-refactored/inventory/packages/aur.20260126-180155.list
+official_file: /home/lin/Downloads/infra-backup-refactored/inventory/packages/official.20260126-180155.list

@@ -1,0 +1,56 @@
+# Backup Summary
+# Generated on: marți 30 decembrie 2025, 23:22:11 +0200
+# Host: sys
+# User: lin
+
+## Backup Information
+- Backup type: docker
+- Timestamp: 20251230_232211
+- Tool version: 0.1.0-prototype
+
+## System Information
+- OS: EndeavourOS
+- Kernel: 6.18.1-arch1-2
+- Architecture: x86_64
+- Uptime: up 1 day, 6 hours, 13 minutes
+
+## Backup Contents
+
+### System Configuration
+- services_20251230_212700.inventory: 2192 bytes
+- services_20251230_214234.inventory: 2192 bytes
+- services_20251230_232205.inventory: 2192 bytes
+- docker_20251230_213637.inventory: 16607 bytes
+- docker_20251230_232209.inventory: 2888 bytes
+- docker_20251230_232118.inventory: 2888 bytes
+- packages_20251230_214234.inventory: 3184 bytes
+- packages_20251230_211405.inventory: 6157 bytes
+- packages_20251230_212419.inventory: 3184 bytes
+- packages_20251230_212659.inventory: 3184 bytes
+- packages_20251230_232205.inventory: 3184 bytes
+- packages_20251230_203720.inventory: 6157 bytes
+- packages_20251230_203921.inventory: 6157 bytes
+- packages_20251230_204021.inventory: 6157 bytes
+
+### Declarative Configuration Files
+- system.conf: 11480 bytes
+- docker.conf: 1103 bytes
+
+### Docker Configuration
+- Compose projects: 4
+- Volume metadata: present
+
+### Configuration Files
+
+
+## Next Steps
+1. Review declarative configuration files in /home/lin/system-repro/Arch-Smart-Backup/infra-backup/declarative/
+2. Edit them to reflect desired state (remove unwanted items)
+3. Use restore scripts to apply configuration to new system
+4. Test thoroughly before production use
+
+## Notes
+- This is a prototype - test thoroughly before relying on it
+- Sensitive files (.env, private keys) are excluded from version control
+- Always review declarative files before applying to production systems
+

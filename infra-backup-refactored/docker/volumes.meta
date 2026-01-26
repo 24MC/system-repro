@@ -1,0 +1,5 @@
+# Docker Volume Metadata
+# Generated on: $(date)
+
+volume.default.backup=all
+volume.default.restore=auto

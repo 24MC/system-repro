@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  cv-web:
+    image: nginx:alpine
+    container_name: cv-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./cv/site:/usr/share/nginx/html:ro
+
+  sotimer-javafx:
+    build: ./sotimer
+    container_name: sotimer-javafx
+    environment:
+      - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      - XDG_RUNTIME_DIR=/run/user/1000
+      - _JAVA_OPTIONS=-Dprism.order=sw -Djavafx.platform=gtk
+    volumes:
+      - /run/user/1000:/run/user/1000
+    network_mode: host

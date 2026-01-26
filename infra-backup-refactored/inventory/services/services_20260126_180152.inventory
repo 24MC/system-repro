@@ -1,0 +1,79 @@
+# Systemd Service Inventory
+# Generated on: luni 26 ianuarie 2026, 18:01:55 +0200
+# Host: sys
+
+## Summary
+- System services: 26
+- User services: 0
+- Masked services: 0
+- Failed services: 0
+
+## System Services
+avahi-daemon.service
+avahi-daemon.socket
+coolercontrold.service
+docker.service
+firewalld.service
+fstrim.timer
+getty@.service
+libvirtd-admin.socket
+libvirtd-ro.socket
+libvirtd.service
+libvirtd.socket
+lm_sensors.service
+NetworkManager-dispatcher.service
+NetworkManager.service
+NetworkManager-wait-online.service
+ollama.service
+paccache.timer
+power-profiles-daemon.service
+sddm.service
+SO5_LabApp.service
+systemd-timesyncd.service
+systemd-userdbd.socket
+virtlockd-admin.socket
+virtlockd.socket
+virtlogd-admin.socket
+virtlogd.socket
+
+## User Services
+
+
+## Masked Services
+
+
+## Failed Services
+
+
+## Service Status
+# Service Status Report
+# Generated on: luni 26 ianuarie 2026, 18:01:55 +0200
+# Host: sys
+
+## System Services Status
+service.avahi-daemon.service.status=active
+service.avahi-daemon.socket.status=active
+service.coolercontrold.service.status=active
+service.docker.service.status=active
+service.firewalld.service.status=active
+service.fstrim.timer.status=active
+service.getty@.service.status=enabled
+service.libvirtd-admin.socket.status=active
+service.libvirtd-ro.socket.status=active
+service.libvirtd.service.status=active
+service.libvirtd.socket.status=active
+service.lm_sensors.service.status=active
+service.NetworkManager-dispatcher.service.status=enabled
+service.NetworkManager.service.status=active
+service.NetworkManager-wait-online.service.status=active
+service.ollama.service.status=enabled
+service.paccache.timer.status=active
+service.power-profiles-daemon.service.status=active
+service.sddm.service.status=active
+service.SO5_LabApp.service.status=enabled
+service.systemd-timesyncd.service.status=active
+service.systemd-userdbd.socket.status=active
+service.virtlockd-admin.socket.status=active
+service.virtlockd.socket.status=active
+service.virtlogd-admin.socket.status=active
+service.virtlogd.socket.status=active
