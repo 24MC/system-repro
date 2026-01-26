@@ -1,4 +1,6 @@
 # infra-backup
+WARNING -> Au fost utilizate conștient AI-tools la crearea **system-repro**
+
 > Prototip funcțional pentru backup + reproducere declarativă a infrastructurii locale pe **Arch Linux / EndeavourOS**
 
 `infra-backup` este un toolkit simplu (Bash) care face **inventory → declarative → restore → validate** pentru o stație locală, astfel încât după o reinstalare să poți reface rapid configurația de bază.
