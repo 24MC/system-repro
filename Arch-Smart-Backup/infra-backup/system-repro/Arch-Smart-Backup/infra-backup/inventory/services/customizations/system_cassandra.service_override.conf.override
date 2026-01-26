@@ -1,3 +1,0 @@
-[Service]
-Environment="CASSANDRA_HOME=/usr/share/cassandra"
-Environment="CASSANDRA_CONF=/etc/cassandra"
